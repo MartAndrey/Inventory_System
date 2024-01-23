@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>Inventory_System</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Garbage.png" />
+    <None Remove="Money.png" />
+    <None Remove="Returned.png" />
+    <None Remove="Shopping Cart.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Shopping Cart.png" />
+    <Resource Include="Assets\Money.png" />
+    <Resource Include="Assets\Garbage.png" />
+    <Resource Include="Assets\Returned.png" />
+  </ItemGroup>
+
+</Project>
