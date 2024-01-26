@@ -76,6 +76,12 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="RoundedBorder2" TargetType="Border">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -83,7 +89,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,10" Orientation="Horizontal" RenderTransformOrigin="0.619,0.569">
-            <Button Style="{DynamicResource ButtonStyleRounded}" RenderTransformOrigin="0.5,0.5" Foreground="#FFF5F4F1" Padding="10,8,10,8" Height="45" FontSize="14" Content="Panel De Control" FontFamily="Cascadia Code" Cursor="Hand" BorderThickness="0" Width="180" Background="#FF9C9CA0" FontWeight="Bold">
+            <Button Style="{DynamicResource ButtonStyleRounded}" RenderTransformOrigin="0.5,0.5" Foreground="#FFF5F4F1" Padding="10,8,10,8" Height="45" FontSize="14" Content="Panel De Control" FontFamily="Cascadia Code" Cursor="Hand" BorderThickness="0" Width="180" Background="#FF9C9CA0" FontWeight="Bold" IsEnabled="False">
                 <Button.BorderBrush>
                     <SolidColorBrush Opacity="0" Color="Black"/>
                 </Button.BorderBrush>
@@ -116,7 +122,7 @@
                 <RowDefinition Height="280"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Background="#9C9CA0" Margin="60,0,60,0" CornerRadius="20"/>
+            <Border Background="#FFF8F9F9" Margin="60,0,60,0" CornerRadius="20"/>
             <Grid Margin="50,10,50,40" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>
@@ -240,6 +246,60 @@
                         </Canvas>
                     </Border>
                 </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="50">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"  FontSize="30" FontWeight="Bold" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Center">Productos Más Vendidos</TextBlock>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderBrush="#FF9C9CA0" BorderThickness="0,0,0,1" Panel.ZIndex="1"  Opacity="0.8"/>
+                        <Border  Grid.Row="0" Grid.RowSpan="2" BorderThickness="1" CornerRadius="20" Background="#FFF8F9F9">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="#FF9C9CA0" Opacity="0.8"/>
+                            </Border.BorderBrush>
+                            <DataGrid ItemsSource="{Binding BestProducts}" Grid.Row="1" Background="{x:Null}" Foreground="#FF020713" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Cascadia Code" FontSize="18" FontWeight="Bold" AutoGenerateColumns="False" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="Horizontal" HeadersVisibility="Column" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" MinRowHeight="30" IsReadOnly="True" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserReorderColumns="False" RowHeight="40" SelectionUnit="Cell">
+                                <DataGrid.HorizontalGridLinesBrush>
+                                    <SolidColorBrush Color="Transparent"/>
+                                </DataGrid.HorizontalGridLinesBrush>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Width="1*" Header="posición" Binding="{Binding Position}" IsReadOnly="true"></DataGridTextColumn>
+                                    <DataGridTextColumn Width="2*" Header="Nombre"  Binding="{Binding Name}" IsReadOnly="true"></DataGridTextColumn>
+                                    <DataGridTextColumn Width="1*" Header="Ventas"  Binding="{Binding Sales, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
+                                    <DataGridTextColumn Width="1*" Header="Cantidad"  Binding="{Binding Amount}" IsReadOnly="true"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                                <DataGrid.Resources>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="Height" Value="50"/>
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    </Style>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="14"/>
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="BorderBrush" Value="#FF9C9CA0"/>
+                                        <Setter Property="Opacity" Value=".8"/>
+                                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                                    </Style>
+                                </DataGrid.Resources>
+                            </DataGrid>
+                        </Border>
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>
