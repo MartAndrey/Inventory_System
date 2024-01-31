@@ -14,6 +14,7 @@
     <None Remove="Garbage.png" />
     <None Remove="Money.png" />
     <None Remove="Returned.png" />
+    <None Remove="Screenshot 2024-01-26 182437.png" />
     <None Remove="Shopping Cart.png" />
   </ItemGroup>
 
@@ -22,6 +23,7 @@
     <Resource Include="Assets\Money.png" />
     <Resource Include="Assets\Garbage.png" />
     <Resource Include="Assets\Returned.png" />
+    <Resource Include="Assets\Screenshot 2024-01-26 182437.png" />
   </ItemGroup>
 
 </Project>

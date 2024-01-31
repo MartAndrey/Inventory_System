@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Inventory_System"
         mc:Ignorable="d"
-        Title="MainWindow" WindowState="Maximized" Height="1080" Width="1920">
+        Title="MainWindow" WindowState="Maximized" Height="1080" Width="1920" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -254,10 +254,10 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" Margin="50">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="60"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0"  FontSize="30" FontWeight="Bold" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Center">Productos Más Vendidos</TextBlock>
+                    <TextBlock Grid.Row="0" Margin="20,0,0,0" FontSize="25" FontWeight="Bold" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Center">Productos Más Vendidos</TextBlock>
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"></RowDefinition>
@@ -300,6 +300,7 @@
                         </Border>
                     </Grid>
                 </Grid>
+                <Image Source="/Assets/Screenshot 2024-01-26 182437.png" Grid.Column="1" Margin="54,40,54,39"></Image>
             </Grid>
         </Grid>
     </Grid>
