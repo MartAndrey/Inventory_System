@@ -66,7 +66,7 @@
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
+                            <Trigger Property="IsFocused" Value="True">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource HoverGradient}"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#F5F4F1"/>
@@ -89,7 +89,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,10" Orientation="Horizontal" RenderTransformOrigin="0.619,0.569">
-            <Button Style="{DynamicResource ButtonStyleRounded}" RenderTransformOrigin="0.5,0.5" Foreground="#FFF5F4F1" Padding="10,8,10,8" Height="45" FontSize="14" Content="Panel De Control" FontFamily="Cascadia Code" Cursor="Hand" BorderThickness="0" Width="180" Background="#FF9C9CA0" FontWeight="Bold" IsEnabled="False">
+            <Button x:Name="pageDefaultBTN" Style="{DynamicResource ButtonStyleRounded}" IsDefault="True" Click="ButtonDashboard"  RenderTransformOrigin="0.5,0.5" Foreground="#FFF5F4F1" Padding="10,8,10,8" Height="45" FontSize="14" Content="Panel De Control" FontFamily="Cascadia Code" Cursor="Hand" BorderThickness="0" Width="180" Background="#FF9C9CA0" FontWeight="Bold">
                 <Button.BorderBrush>
                     <SolidColorBrush Opacity="0" Color="Black"/>
                 </Button.BorderBrush>
@@ -103,7 +103,7 @@
                 </Button.LayoutTransform>
             </Button>
             <Separator Width="20" Background="{x:Null}"/>
-            <Button Style="{DynamicResource ButtonStyleRounded}" RenderTransformOrigin="0.5,0.5" Foreground="#FFF5F4F1" Padding="10,8,10,8" Height="45" FontSize="14" Content="Inventario" FontFamily="Cascadia Code" Cursor="Hand" BorderThickness="0" Width="180" Background="#FF9C9CA0" FontWeight="Bold">
+            <Button Style="{DynamicResource ButtonStyleRounded}" Click="ButtonInventory" RenderTransformOrigin="0.5,0.5" Foreground="#FFF5F4F1" Padding="10,8,10,8" Height="45" FontSize="14" Content="Inventario" FontFamily="Cascadia Code" Cursor="Hand" BorderThickness="0" Width="180" Background="#FF9C9CA0" FontWeight="Bold">
                 <Button.BorderBrush>
                     <SolidColorBrush Opacity="0" Color="Black"/>
                 </Button.BorderBrush>
@@ -117,191 +117,6 @@
                 </Button.LayoutTransform>
             </Button>
         </StackPanel>
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="280"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Border Background="#FFF8F9F9" Margin="60,0,60,0" CornerRadius="20"/>
-            <Grid Margin="50,10,50,40" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" FontSize="30" FontWeight="Bold" FontFamily="Cascadia Code" HorizontalAlignment="Center" VerticalAlignment="Top">Resumen</TextBlock>
-                <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Border Height="150" Width="250" CornerRadius="25" BorderThickness="0">
-                        <Border.Background>
-                            <LinearGradientBrush EndPoint="0.5,2.1" StartPoint="0.5,0" MappingMode="RelativeToBoundingBox" SpreadMethod="Pad">
-                                <LinearGradientBrush.RelativeTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                        <SkewTransform AngleX="0" CenterX="0.5" CenterY="0.5" AngleY="0"/>
-                                        <RotateTransform CenterX="0.5" CenterY="0.5" Angle="-90"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </LinearGradientBrush.RelativeTransform>
-                                <GradientStop Color="#FFEA638C" Offset="1"/>
-                                <GradientStop Color="#FFE6776B"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <Canvas HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Border CornerRadius="100" Width="40" Height="40" Background="#FFB14B3D" Canvas.Left="-100" Canvas.Top="-20" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                <Image Margin="10,10,10,10">
-                                    <Image.Source>
-                                        <BitmapImage DecodePixelWidth="150"  UriSource="/Assets/Shopping Cart.png" />
-                                    </Image.Source>
-                                </Image>
-                            </Border>
-                            <TextBlock FontFamily="Cascadio Code" FontSize="32" FontWeight="Bold" Foreground="#F5F4F1" Canvas.Left="-44" Canvas.Top="-32" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="100K"/></TextBlock>
-                            <TextBlock FontFamily="Cascadio Code" FontSize="16" FontWeight="Bold" Foreground="#F5F4F1" Canvas.Left="37" Canvas.Top="-18" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="Ordenes"/></TextBlock>
-                            <TextBlock FontFamily="Cascadio Code" FontSize="22" FontWeight="Bold" Foreground="#F5F4F1" Canvas.Left="8" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Top="1"><Run Text="Compras" FlowDirection="RightToLeft"/></TextBlock>
-                        </Canvas>
-                    </Border>
-                    <Separator Width="50" Background="Transparent"></Separator>
-                    <Border Height="150" Width="250" CornerRadius="25" BorderThickness="0">
-                        <Border.Background>
-                            <LinearGradientBrush EndPoint="0.5,2.1" StartPoint="0.5,0" MappingMode="RelativeToBoundingBox" SpreadMethod="Pad">
-                                <LinearGradientBrush.RelativeTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                        <SkewTransform AngleX="0" CenterX="0.5" CenterY="0.5" AngleY="0"/>
-                                        <RotateTransform CenterX="0.5" CenterY="0.5" Angle="-90"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </LinearGradientBrush.RelativeTransform>
-                                <GradientStop Color="#FF7BB7D1" Offset="1"/>
-                                <GradientStop Color="#FF7FE19C"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <Canvas HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Border CornerRadius="100" Width="40" Height="40" Background="#FF659B7E" Canvas.Left="-100" Canvas.Top="-20" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                <Image Margin="8,8,8,8">
-                                    <Image.Source>
-                                        <BitmapImage DecodePixelWidth="150"  UriSource="/Assets/Money.png" />
-                                    </Image.Source>
-                                </Image>
-                            </Border>
-                            <TextBlock FontFamily="Cascadio Code" FontSize="32" FontWeight="Bold" Foreground="#F5F4F1" Canvas.Left="-44" Canvas.Top="-32" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="100K"/></TextBlock>
-                            <TextBlock FontFamily="Cascadio Code" FontSize="16" FontWeight="Bold" Foreground="#F5F4F1" Canvas.Left="37" Canvas.Top="-18" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="Ordenes"/></TextBlock>
-                            <TextBlock FontFamily="Cascadio Code" FontSize="22" FontWeight="Bold" Foreground="#F5F4F1" Canvas.Left="31" VerticalAlignment="Center" HorizontalAlignment="Left" Canvas.Top="6"><Run Text="Ventas" FlowDirection="RightToLeft"/></TextBlock>
-                        </Canvas>
-                    </Border>
-                    <Separator Width="50" Background="Transparent"/>
-                    <Border Height="150" Width="250" CornerRadius="25" BorderThickness="0">
-                        <Border.Background>
-                            <LinearGradientBrush EndPoint="0.5,2.1" StartPoint="0.5,0" MappingMode="RelativeToBoundingBox" SpreadMethod="Pad">
-                                <LinearGradientBrush.RelativeTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                        <SkewTransform AngleX="0" CenterX="0.5" CenterY="0.5" AngleY="0"/>
-                                        <RotateTransform CenterX="0.5" CenterY="0.5" Angle="-90"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </LinearGradientBrush.RelativeTransform>
-                                <GradientStop Color="#FFA767F0" Offset="1"/>
-                                <GradientStop Color="#FFEC90D9"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <Canvas HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Border CornerRadius="100" Width="40" Height="40" Background="#FF963FB4" Canvas.Left="-100" Canvas.Top="-20" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                <Image>
-                                    <Image.Source>
-                                        <BitmapImage DecodePixelWidth="150"  UriSource="/Assets/Garbage.png" />
-                                    </Image.Source>
-                                </Image>
-                            </Border>
-                            <TextBlock FontFamily="Cascadio Code" FontSize="32" FontWeight="Bold" Foreground="#F5F4F1" Canvas.Left="-44" Canvas.Top="-32" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="100K"/></TextBlock>
-                            <TextBlock FontFamily="Cascadio Code" FontSize="16" FontWeight="Bold" Foreground="#F5F4F1" Canvas.Left="37" Canvas.Top="-18" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="Ordenes"/></TextBlock>
-                            <TextBlock FontFamily="Cascadio Code" FontSize="22" FontWeight="Bold" Foreground="#F5F4F1" Canvas.Left="-32" VerticalAlignment="Center" HorizontalAlignment="Left" Canvas.Top="6"><Run Text="Desperdicios" FlowDirection="RightToLeft"/></TextBlock>
-                        </Canvas>
-                    </Border>
-                    <Separator Width="50" Background="Transparent"/>
-                    <Border Height="150" Width="250" CornerRadius="25" BorderThickness="0">
-                        <Border.Background>
-                            <LinearGradientBrush EndPoint="0.5,2.1" StartPoint="0.5,0" MappingMode="RelativeToBoundingBox" SpreadMethod="Pad">
-                                <LinearGradientBrush.RelativeTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                        <SkewTransform AngleX="0" CenterX="0.5" CenterY="0.5" AngleY="0"/>
-                                        <RotateTransform CenterX="0.5" CenterY="0.5" Angle="-90"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </LinearGradientBrush.RelativeTransform>
-                                <GradientStop Color="#FFEC685C" Offset="1"/>
-                                <GradientStop Color="#FFE39A3E"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <Canvas HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Border CornerRadius="100" Width="40" Height="40" Background="#FFB34B3B" Canvas.Left="-100" Canvas.Top="-20" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                <Image Margin="5,5,5,5">
-                                    <Image.Source>
-                                        <BitmapImage DecodePixelWidth="150"  UriSource="/Assets/Returned.png" />
-                                    </Image.Source>
-                                </Image>
-                            </Border>
-                            <TextBlock FontFamily="Cascadio Code" FontSize="32" FontWeight="Bold" Foreground="#F5F4F1" Canvas.Left="-44" Canvas.Top="-32" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="100K"/></TextBlock>
-                            <TextBlock FontFamily="Cascadio Code" FontSize="16" FontWeight="Bold" Foreground="#F5F4F1" Canvas.Left="37" Canvas.Top="-18" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="Ordenes"/></TextBlock>
-                            <TextBlock FontFamily="Cascadio Code" FontSize="22" FontWeight="Bold" Foreground="#F5F4F1" Canvas.Left="-4" VerticalAlignment="Top" HorizontalAlignment="Center" Canvas.Top="6"><Run Text="Devueltos" FlowDirection="RightToLeft"/></TextBlock>
-                        </Canvas>
-                    </Border>
-                </StackPanel>
-            </Grid>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" Margin="50">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="60"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Margin="20,0,0,0" FontSize="25" FontWeight="Bold" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Center">Productos Más Vendidos</TextBlock>
-                    <Grid Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderBrush="#FF9C9CA0" BorderThickness="0,0,0,1" Panel.ZIndex="1"  Opacity="0.8"/>
-                        <Border  Grid.Row="0" Grid.RowSpan="2" BorderThickness="1" CornerRadius="20" Background="#FFF8F9F9">
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="#FF9C9CA0" Opacity="0.8"/>
-                            </Border.BorderBrush>
-                            <DataGrid ItemsSource="{Binding BestProducts}" Grid.Row="1" Background="{x:Null}" Foreground="#FF020713" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Cascadia Code" FontSize="18" FontWeight="Bold" AutoGenerateColumns="False" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="Horizontal" HeadersVisibility="Column" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" MinRowHeight="30" IsReadOnly="True" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserReorderColumns="False" RowHeight="40" SelectionUnit="Cell">
-                                <DataGrid.HorizontalGridLinesBrush>
-                                    <SolidColorBrush Color="Transparent"/>
-                                </DataGrid.HorizontalGridLinesBrush>
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Width="1*" Header="posición" Binding="{Binding Position}" IsReadOnly="true"></DataGridTextColumn>
-                                    <DataGridTextColumn Width="2*" Header="Nombre"  Binding="{Binding Name}" IsReadOnly="true"></DataGridTextColumn>
-                                    <DataGridTextColumn Width="1*" Header="Ventas"  Binding="{Binding Sales, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
-                                    <DataGridTextColumn Width="1*" Header="Cantidad"  Binding="{Binding Amount}" IsReadOnly="true"></DataGridTextColumn>
-                                </DataGrid.Columns>
-                                <DataGrid.Resources>
-                                    <Style TargetType="DataGridColumnHeader">
-                                        <Setter Property="Background" Value="Transparent"/>
-                                        <Setter Property="Height" Value="50"/>
-                                        <Setter Property="HorizontalAlignment" Value="Center"/>
-                                    </Style>
-                                    <Style TargetType="DataGridCell">
-                                        <Setter Property="FontSize" Value="14"/>
-                                        <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        <Setter Property="VerticalAlignment" Value="Center"/>
-                                    </Style>
-                                    <Style TargetType="DataGridRow">
-                                        <Setter Property="Background" Value="Transparent"/>
-                                        <Setter Property="BorderBrush" Value="#FF9C9CA0"/>
-                                        <Setter Property="Opacity" Value=".8"/>
-                                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                                    </Style>
-                                </DataGrid.Resources>
-                            </DataGrid>
-                        </Border>
-                    </Grid>
-                </Grid>
-                <Image Source="/Assets/Screenshot 2024-01-26 182437.png" Grid.Column="1" Margin="54,40,54,39"></Image>
-            </Grid>
-        </Grid>
+        <UserControl Grid.Row="1"  x:Name="mainContentControl"></UserControl>
     </Grid>
 </Window>
