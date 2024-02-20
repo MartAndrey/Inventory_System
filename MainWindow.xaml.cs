@@ -18,8 +18,6 @@ namespace Inventory_System
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ObservableCollection<Product> BestProducts { get; set; }
-
         public MainWindow()
         {
             InitializeComponent();
@@ -27,25 +25,9 @@ namespace Inventory_System
             mainContentControl.Content = new Dashboard();
 
             pageDefaultBTN.Focus();
-
-            BestProducts = new ObservableCollection<Product>
-            {
-                new Product { Position = 1, Name = "Product 1", Sales = 100000, Amount = 100 },
-                new Product { Position = 2, Name = "Product 1", Sales = 100000, Amount = 100 },
-                new Product { Position = 3, Name = "Product 1", Sales = 100000, Amount = 100 },
-                new Product { Position = 4, Name = "Product 1", Sales = 100000, Amount = 100 },
-                new Product { Position = 5, Name = "Product 1", Sales = 100000, Amount = 100 },
-                new Product { Position = 6, Name = "Product 1", Sales = 100000, Amount = 100 },
-                new Product { Position = 7, Name = "Product 1", Sales = 100000, Amount = 100 },
-                new Product { Position = 8, Name = "Product 1", Sales = 100000, Amount = 100 },
-                new Product { Position = 9, Name = "Product 1", Sales = 100000, Amount = 100 },
-                new Product { Position = 10, Name = "Product 1", Sales = 100000, Amount = 100 },
-            };
-
-            DataContext = this;
         }
 
-        private void ChangePage( ContentControl newPage)
+        private void ChangePage(ContentControl newPage)
         {
             mainContentControl.Content = newPage;
         }
@@ -54,10 +36,15 @@ namespace Inventory_System
         {
             ChangePage(new Dashboard());
         }
-        
+
         private void ButtonInventory(object sender, RoutedEventArgs e)
         {
             ChangePage(new Inventory());
+        }
+
+        private void ButtonSales(object sender, RoutedEventArgs e)
+        {
+            ChangePage(new Sales());
         }
     }
 }

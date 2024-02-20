@@ -158,34 +158,13 @@
                             <Border.BorderBrush>
                                 <SolidColorBrush Color="#FF9C9CA0" Opacity="0.8"/>
                             </Border.BorderBrush>
-                            <DataGrid ItemsSource="{Binding BestProducts}" Grid.Row="1" Background="{x:Null}" Foreground="#FF020713" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Cascadia Code" FontSize="18" FontWeight="Bold" AutoGenerateColumns="False" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="Horizontal" HeadersVisibility="Column" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" MinRowHeight="30" IsReadOnly="True" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserReorderColumns="False" RowHeight="40" SelectionUnit="Cell">
-                                <DataGrid.HorizontalGridLinesBrush>
-                                    <SolidColorBrush Color="Transparent"/>
-                                </DataGrid.HorizontalGridLinesBrush>
+                            <DataGrid ItemsSource="{Binding BestProducts}" Style="{StaticResource DataGridStyle}" Grid.Row="1" VerticalAlignment="Top" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserReorderColumns="False" SelectionUnit="Cell">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Width="1*" Header="posición" Binding="{Binding Position}" IsReadOnly="true"></DataGridTextColumn>
                                     <DataGridTextColumn Width="2*" Header="Nombre"  Binding="{Binding Name}" IsReadOnly="true"></DataGridTextColumn>
                                     <DataGridTextColumn Width="1*" Header="Ventas"  Binding="{Binding Sales, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
                                     <DataGridTextColumn Width="1*" Header="Cantidad"  Binding="{Binding Amount}" IsReadOnly="true"></DataGridTextColumn>
                                 </DataGrid.Columns>
-                                <DataGrid.Resources>
-                                    <Style TargetType="DataGridColumnHeader">
-                                        <Setter Property="Background" Value="Transparent"/>
-                                        <Setter Property="Height" Value="50"/>
-                                        <Setter Property="HorizontalAlignment" Value="Center"/>
-                                    </Style>
-                                    <Style TargetType="DataGridCell">
-                                        <Setter Property="FontSize" Value="14"/>
-                                        <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        <Setter Property="VerticalAlignment" Value="Center"/>
-                                    </Style>
-                                    <Style TargetType="DataGridRow">
-                                        <Setter Property="Background" Value="Transparent"/>
-                                        <Setter Property="BorderBrush" Value="#FF9C9CA0"/>
-                                        <Setter Property="Opacity" Value=".8"/>
-                                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                                    </Style>
-                                </DataGrid.Resources>
                             </DataGrid>
                         </Border>
                     </Grid>

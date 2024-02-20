@@ -1,4 +1,4 @@
-public class Product
+public class BestProduct
 {
     public int Position { get; set; }
     public string Name { get; set; }
