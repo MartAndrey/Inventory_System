@@ -4,9 +4,120 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Inventory_System.Pages"
+              xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height=".8*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width=".5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" MaxWidth="1000" MaxHeight="50" Margin="50, 15" CornerRadius="10" Background="#FF9C9CA0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <fa:ImageAwesome Grid.Column="0" Margin="10, 5" Icon="Search" Foreground="#FFF5F4F1"/>
+                <GridSplitter Width="2" Margin="0,5"/>
+                <TextBox Grid.Column="2" Background="Transparent" Foreground="#FFF5F4F1" BorderThickness="0" Margin="20,10,20,9" FontFamily="Cascadia Code" FontSize="20" Text="Buscar Producto" VerticalContentAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <Grid  Grid.Row="1" Grid.ColumnSpan="2" Margin="50,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border  Panel.ZIndex="1" BorderThickness="0,0,0,1" BorderBrush="#FF9C9CA0"></Border>
+            <Border CornerRadius="25" Grid.Row="0" BorderThickness="1" Background="#FFF8F9F9" Grid.RowSpan="2">
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="#FF9C9CA0" Opacity="0.8"/>
+                </Border.BorderBrush>
+                <DataGrid ItemsSource="{Binding Products}" Style="{StaticResource DataGridStyle}"  >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width=".5*" Header="Id" Binding="{Binding Id}" IsReadOnly="true"></DataGridTextColumn>
+                        <DataGridTextColumn Width="2*" Header="Nombre"  Binding="{Binding Name}" IsReadOnly="true"></DataGridTextColumn>
+                        <DataGridTextColumn Width="1*" Header="Cantidad"  Binding="{Binding Amount}" IsReadOnly="true"></DataGridTextColumn>
+                        <DataGridTextColumn Width="1*" Header="Categoria"  Binding="{Binding Category}" IsReadOnly="true"></DataGridTextColumn>
+                        <DataGridTextColumn Width="1*" Header="P. Unitario"  Binding="{Binding UnitPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
+                        <DataGridTextColumn Width="1*" Header="P. Libra"  Binding="{Binding PoundsPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
+                        <DataGridTextColumn Width="1*" Header="P. Kilo"  Binding="{Binding KilosPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
+                        <DataGridTextColumn Width="1*" Header="P. Arroba"  Binding="{Binding ArrobasPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
+                        <DataGridTextColumn Width="1*" Header="P. Bulto"  Binding="{Binding BulkPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+        </Grid>
+        <Border Margin="50 15 10 15" CornerRadius="25" Grid.Row="2" BorderThickness="1" Background="#FFF8F9F9" Grid.RowSpan="2">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="#FF9C9CA0" Opacity="0.8"/>
+            </Border.BorderBrush>
+            <DataGrid ItemsSource="{Binding Products}" Style="{StaticResource DataGridStyle}"  >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width=".5*" Header="Id" Binding="{Binding Id}" IsReadOnly="true"></DataGridTextColumn>
+                    <DataGridTextColumn Width="2*" Header="Nombre"  Binding="{Binding Name}" IsReadOnly="true"></DataGridTextColumn>
+                    <DataGridTextColumn Width="1*" Header="Cantidad"  Binding="{Binding Amount}" IsReadOnly="true"></DataGridTextColumn>
+                    <DataGridTextColumn Width="1*" Header="Categoria"  Binding="{Binding Category}" IsReadOnly="true"></DataGridTextColumn>
+                    <DataGridTextColumn Width="1*" Header="P. Unitario"  Binding="{Binding UnitPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
+                    <DataGridTextColumn Width="1*" Header="P. Libra"  Binding="{Binding PoundsPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
+                    <DataGridTextColumn Width="1*" Header="P. Kilo"  Binding="{Binding KilosPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
+                    <DataGridTextColumn Width="1*" Header="P. Arroba"  Binding="{Binding ArrobasPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
+                    <DataGridTextColumn Width="1*" Header="P. Bulto"  Binding="{Binding BulkPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+        <Grid Grid.Row="2" Grid.Column="2" Margin="10 15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".3*"></RowDefinition>
+                <RowDefinition Height=".1*"></RowDefinition>
+                <RowDefinition Height=".1*"></RowDefinition>
+                <RowDefinition Height=".1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".3*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="20" Style="{StaticResource LabelStyle}" Content="TOTAL"></Label>
+                <fa:ImageAwesome Grid.Row="1" Margin="20, 5" Icon="Dollar" Stretch="Uniform"/>
+                <Viewbox Grid.Row="1" Grid.Column="1" Stretch="Uniform" StretchDirection="Both" Margin="20,0,20,-2">
+                    <TextBlock Text="20.000" TextWrapping="Wrap" Width="44" Height="18"/>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="1" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".4*"/>
+                    <ColumnDefinition Width=".1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Paga Con:" TextWrapping="NoWrap" FontSize="30"/>
+                <TextBlock Grid.Column="2" Text="100.000" TextWrapping="NoWrap" FontSize="30"/>
+            </Grid>
+            <Grid Grid.Row="2" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".4*"/>
+                    <ColumnDefinition Width=".1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Cambio" TextWrapping="NoWrap" FontSize="30"/>
+                <TextBlock Grid.Column="2" Text="80.000" TextWrapping="NoWrap" FontSize="30"/>
+            </Grid>
+            <Viewbox Grid.Row="3" Stretch="Uniform" StretchDirection="Both">
+                <Button Background="#FFF33333"  BorderBrush="{x:Null}" Foreground="White" FontFamily="Cascadia Code" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20,10,20,10">Realizar Venta
+                    
+                </Button>
+            </Viewbox>
+        </Grid>
     </Grid>
 </UserControl>

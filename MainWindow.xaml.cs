@@ -41,7 +41,7 @@ namespace Inventory_System
         {
             ChangePage(new Inventory());
         }
-
+ 
         private void ButtonSales(object sender, RoutedEventArgs e)
         {
             ChangePage(new Sales());
