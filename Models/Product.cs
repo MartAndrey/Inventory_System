@@ -10,6 +10,4 @@ public class Product
     public float KilosPrice { get; set; }
     public float ArrobasPrice { get; set; }
     public float BulkPrice { get; set; }
-    public DateTime DateAcquisition { get; set; }
-    public DateTime DateExpiration { get; set; }
 }

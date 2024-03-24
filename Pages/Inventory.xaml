@@ -31,29 +31,33 @@
             </Border>
             <Button Grid.Column="1"  Style="{DynamicResource ButtonStyleRounded}" Content="Agregar Producto" Click="ShowAddProductWindow_Click"/>
         </Grid>
-        <Grid  Grid.Row="1" Margin="80,50">
+        <Grid  Grid.Row="1" Margin="80,10">
             <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Border  Panel.ZIndex="1" BorderThickness="0,0,0,1" BorderBrush="#FF9C9CA0"></Border>
-            <Border CornerRadius="25" Grid.Row="0" BorderThickness="1" Background="#FFF8F9F9" Grid.RowSpan="2">
+            <WrapPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <ComboBox Text="Precio Unitario" FontFamily="Cascadia Code" FontSize="18" Padding="20,10,20,10" SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBoxItem IsSelected="True">Precio Unitario</ComboBoxItem>
+                    <ComboBoxItem>Precio Libra</ComboBoxItem>
+                    <ComboBoxItem>Precio Kilo</ComboBoxItem>
+                    <ComboBoxItem>Precio Arroba</ComboBoxItem>
+                    <ComboBoxItem>Precio Bulto</ComboBoxItem>
+                </ComboBox>
+            </WrapPanel>
+            <Border  Grid.Row="1" Panel.ZIndex="1" BorderThickness="0,0,0,1" BorderBrush="#FF9C9CA0"></Border>
+            <Border CornerRadius="25" Grid.Row="1" BorderThickness="1" Background="#FFF8F9F9" Grid.RowSpan="2">
                 <Border.BorderBrush>
                     <SolidColorBrush Color="#FF9C9CA0" Opacity="0.8"/>
                 </Border.BorderBrush>
-                <DataGrid ItemsSource="{Binding Products}" Style="{StaticResource DataGridStyle}"  >
+                <DataGrid x:Name="dataGrid" ItemsSource="{Binding Products}" Style="{StaticResource DataGridStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Hidden"  >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width=".5*" Header="Id" Binding="{Binding Id}" IsReadOnly="true"></DataGridTextColumn>
-                        <DataGridTextColumn Width="2*" Header="Nombre"  Binding="{Binding Name}" IsReadOnly="true"></DataGridTextColumn>
-                        <DataGridTextColumn Width="1*" Header="Cantidad"  Binding="{Binding Amount}" IsReadOnly="true"></DataGridTextColumn>
-                        <DataGridTextColumn Width="1*" Header="Categoria"  Binding="{Binding Category}" IsReadOnly="true"></DataGridTextColumn>
-                        <DataGridTextColumn Width="1*" Header="P. Unitario"  Binding="{Binding UnitPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
-                        <DataGridTextColumn Width="1*" Header="P. Libra"  Binding="{Binding PoundsPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
-                        <DataGridTextColumn Width="1*" Header="P. Kilo"  Binding="{Binding KilosPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
-                        <DataGridTextColumn Width="1*" Header="P. Arroba"  Binding="{Binding ArrobasPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
-                        <DataGridTextColumn Width="1*" Header="P. Bulto"  Binding="{Binding BulkPrice, StringFormat={}{0:C0}}" IsReadOnly="true"></DataGridTextColumn>
-                        <DataGridTextColumn Width="1*" Header="Fecha de Adquisición"  Binding="{Binding DateAcquisition}" IsReadOnly="true"></DataGridTextColumn>
-                        <DataGridTextColumn Width="1*" Header="Fecha de vencimiento"  Binding="{Binding DateExpiration}" IsReadOnly="true"></DataGridTextColumn>
+                        <DataGridTextColumn Width=".5*" Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="2*" Header="Nombre"  Binding="{Binding Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="1*" Header="Cantidad"  Binding="{Binding Amount}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="1*" Header="Categoria"  Binding="{Binding Category}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="1*" Header="Precio"  Binding="{Binding UnitPrice, StringFormat={}{0:C0}}"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
