@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Binding = System.Windows.Data.Binding;
+using Brushes = System.Windows.Media.Brushes;
 using ComboBox = System.Windows.Controls.ComboBox;
 
 namespace Inventory_System.Pages
@@ -74,6 +76,8 @@ namespace Inventory_System.Pages
             };
 
             DataContext = this;
+
+            search.TextChanged += FilterData;
         }
 
         private void ShowAddProductWindow_Click(object sender, RoutedEventArgs e)
@@ -114,6 +118,39 @@ namespace Inventory_System.Pages
                     }
                 }
             }
+        }
+
+        private void SearchGotFocus(object sender, RoutedEventArgs e)
+        {
+            if (search.Text == "Buscar Producto")
+                search.Text = "";
+        }
+
+        private void SearchLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(search.Text))
+                search.Text = "Buscar Producto";
+        }
+
+        private void FilterData(object sender, RoutedEventArgs e)
+        {
+
+            if (search.Text == "Buscar Producto") return;
+
+            ICollectionView view = CollectionViewSource.GetDefaultView(dataGrid.ItemsSource);
+            view.Filter = item =>
+            {
+                if (string.IsNullOrEmpty(search.Text))
+                    return true;
+
+                foreach (var prop in typeof(Product).GetProperties())
+                {
+                    var value = prop.GetValue(item)?.ToString();
+                    if (value != null && value.IndexOf(search.Text, StringComparison.OrdinalIgnoreCase) != -1)
+                        return true;
+                }
+                return false;
+            };
         }
     }
 }

@@ -26,7 +26,7 @@
                     </Grid.ColumnDefinitions>
                     <fa:ImageAwesome Grid.Column="0" Margin="10, 5" Icon="Search" Foreground="#FFF5F4F1"/>
                     <GridSplitter Width="2" Margin="0,5"/>
-                    <TextBox Grid.Column="2" Background="Transparent" Foreground="#FFF5F4F1" BorderThickness="0" Margin="20,10,20,9" FontFamily="Cascadia Code" FontSize="20" Text="Buscar Producto" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="search" Grid.Column="2" Background="Transparent" Foreground="#FFF5F4F1" BorderThickness="0" Margin="20,10,20,9" FontFamily="Cascadia Code" FontSize="20" Text="Buscar Producto" VerticalContentAlignment="Center" GotFocus="SearchGotFocus" LostFocus="SearchLostFocus"/>
                 </Grid>
             </Border>
             <Button Grid.Column="1"  Style="{DynamicResource ButtonStyleRounded}" Content="Agregar Producto" Click="ShowAddProductWindow_Click"/>
